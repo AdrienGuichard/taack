@@ -1,0 +1,15 @@
+group 'taack'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.5.4'
+}

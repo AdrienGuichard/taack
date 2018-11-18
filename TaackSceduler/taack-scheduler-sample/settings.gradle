@@ -1,0 +1,2 @@
+include 'taack-scheduler-library'
+project(':taack-scheduler-library').projectDir = new File(settingsDir, '../taack-scheduler-library')

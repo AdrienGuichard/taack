@@ -1,0 +1,14 @@
+group 'taack'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'application'
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "tasks.SimpleSample"
+
+dependencies {
+    compile project(':taack-scheduler-library')
+}
