@@ -1,7 +1,9 @@
 package taackScheduller.datum
 
+import groovy.transform.CompileStatic
 import taackScheduller.service.log.FileAppender
 
+@CompileStatic
 final class CommandResult {
     final String name
     final int retCode

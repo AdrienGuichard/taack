@@ -1,8 +1,6 @@
 package taackScheduller.service.log
 
 import groovy.transform.CompileStatic
-import taackScheduller.datum.Command
-import taackScheduller.datum.Machine
 
 import java.nio.file.Files
 import java.nio.file.Path
