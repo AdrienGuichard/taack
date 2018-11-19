@@ -4,13 +4,12 @@ import groovy.transform.CompileStatic
 
 @CompileStatic
 final class Machine {
-    int port
+    Integer port
     String hostname
     String login
-    Boolean sshMiddleServer
     Machine reverseSshServer
 
     String getName() {
-        "$login@$hostname:$port"
+        "$login@$hostname:${port?:22}"
     }
 }

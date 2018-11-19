@@ -72,10 +72,12 @@ class SimpleSample implements Job {
                     println "problem executing tFirst on nucde"
                 } else {
                     println "no problem on nucde"
-                //    executeParallel([t2: t1])
+                    // executeParallel([t2: t1])
                 }
                 List<CommandResult> localResult = tFirst?.commandResults()
-                List<File> totoOutput =  localResult*.out*.fileOutput.findAll { File content -> content.text ==~ /(?sm).*toto.*/ }
+                List<File> totoOutput =  localResult*.out*.fileOutput.findAll {
+                    File content -> content.text ==~ /(?sm).*toto.*/
+                }
                 if (totoOutput*.text)
                     println "echo toto OK"
             }

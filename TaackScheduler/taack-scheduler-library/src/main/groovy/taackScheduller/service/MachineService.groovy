@@ -10,7 +10,7 @@ final class MachineService {
 
     static void startReverseSsh(final Machine machine) {
         if (machine.reverseSshServer) {
-            String command = "/usr/bin/ssh -p ${machine.reverseSshServer.port?:22} ${machine.reverseSshServer.login}@${machine.reverseSshServer.hostname} " +
+            String command = "/usr/bin/ssh -p ${machine.reverseSshServer.port ?: 22} ${machine.reverseSshServer.login}@${machine.reverseSshServer.hostname} " +
                     " -L ${machine.port}:${machine.hostname}:${machine.port} -N"
             Process process = command.execute()
 
@@ -18,14 +18,6 @@ final class MachineService {
 
             sleep(3000)
         }
-    }
-
-    static void stopReverseSsh(final Machine machine) {
-        Process process = openConnectionProcess.get(machine)
-        if (process.alive) {
-            process.destroy()
-        }
-        openConnectionProcess.remove(machine)
     }
 
     static void startReverseSsh(final Map<String, Machine> machineMap) {
@@ -53,20 +45,5 @@ final class MachineService {
         }
         openConnectionProcess.clear()
         machineConnectionCounter.clear()
-    }
-
-    static void stopReverseSsh(final Map<String, Machine> machineMap) {
-
-        machineMap.values().grep { Machine machine ->
-            !machine.sshMiddleServer && machine.reverseSshServer
-        }.each {
-            if (machineConnectionCounter.containsKey(it)) {
-                Integer instanceCounter = machineConnectionCounter.get(it)
-                if (instanceCounter == 1) {
-                    stopReverseSsh(it)
-                }
-                machineConnectionCounter.put(it, instanceCounter >= 1 ? instanceCounter - 1 : 0)
-            }
-        }
     }
 }
