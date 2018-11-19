@@ -61,7 +61,7 @@ final class TaskManager {
                     o.printTabbed "executing command ${cmds}"
                     ProcessBuilder pb = new ProcessBuilder("ssh",
                             "${machine.login ? "${machine.login}@" : ""}${machine.hostname}",
-                            "- p ${machine.port ?: 22}",
+                            " -p ${machine.port ?: 22}",
                             "'bash'"
                     )
                     pb.redirectInput(cmds)
