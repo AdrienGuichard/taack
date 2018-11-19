@@ -1,0 +1,4 @@
+﻿.idea
+.idea/*
+TaackScheduler/*/.gradle/
+TaackScheduler/*/build/
